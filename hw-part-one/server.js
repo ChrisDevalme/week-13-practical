@@ -17,6 +17,12 @@ app.get('/greeting/:name', (req, res) => {
     res.send(`Hello ${req.params.name} It's great to see you!`)
 })
 
+app.get('/tip/:total/:tipPercentage', (req, res) => {
+    let tip = parseInt(req.params.tipPercentage)/100
+    let total = parseInt(req.params.total)
+    res.send(`${total*tip}`)
+    
+})
 
 
 app.listen(3000, () => {
