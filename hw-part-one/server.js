@@ -31,6 +31,32 @@ app.get('/magic/Will%20I%20Be%20A%20Millionaire', (req, res) => {
     res.send(`<h1>${magicResponses[randomResponse]}</h1>`)
 })
 
+app.get('/fibonnaci/:num', (req, res) => {
+    let userNumber = parseInt(req.params.num)
+    const isFibonacci = num => {
+        if(num === 0 || num === 1){
+           return true;
+        }
+        let prev = 1;
+        let count = 2;
+        let temp = 0;
+        while(count <= num){
+           if(prev + count === num){
+              return true;
+           };
+           temp = prev;
+           prev = count;
+           count += temp;
+        };
+        return false;
+     };
+     if(isFibonacci(userNumber)){
+        res.send("Very good. It is Fibonacci.")
+     } else {
+        res.send("I can tell this is not a fibonacci number.")
+     }
+     
+})
 
 
 app.listen(3000, () => {
